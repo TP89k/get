@@ -28,18 +28,13 @@ while True:
         print("Both pressed! Max value:", num)
         time.sleep(sleep_time)
     elif up_state:
-        num = num + 1
+        num = (num + 1) % 256
         print(num, dec2bin(num))
         time.sleep(sleep_time)
     elif down_state:
-        num = num - 1
+        num = (num - 1) % 256
         print(num, dec2bin(num))
         time.sleep(sleep_time)
-    
-    if num > 255:
-        num = 0
-    if num < 0:
-        num = 255
     
     GPIO.output(leds, dec2bin(num))
     time.sleep(0.01)
